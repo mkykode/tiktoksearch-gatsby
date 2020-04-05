@@ -3,7 +3,7 @@ const TikTokScraper = require("tiktok-scraper")
 
 exports.handler = async (event, context) => {
   try {
-    const videosUrls = await TikTokScraper.trend("", { number: 18 })
+    const videosUrls = await TikTokScraper.trend("", { number: 12 })
     return {
       statusCode: 200,
       body: JSON.stringify({ error: null, videosUrls }),
