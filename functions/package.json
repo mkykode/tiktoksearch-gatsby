@@ -3,24 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "pushd node_modules/canvas && node-gyp rebuil"
+  },
   "dependencies": {
-    "bufferutil": "^4.0.1",
-    "canvas": "^2.6.1",
-    "tiktok-scraper": "^1.1.1",
-    "jest": "^25.1.0",
-    "ts-jest": "^25.2.1",
-    "ts-node": "^8.8.1",
-    "typescript": "^3.8.3",
     "archiver": "^3.1.1",
     "async": "^3.1.0",
     "bluebird": "^3.7.1",
+    "bufferutil": "^4.0.1",
+    "canvas": "^2.6.1",
+    "jest": "^25.1.0",
     "jsdom": "^16.0.1",
     "json2csv": "^4.5.4",
+    "node-gyp": "^6.1.0",
     "ora": "^4.0.2",
     "progress": "^2.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "socks-proxy-agent": "^5.0.0",
+    "tiktok-scraper": "^1.1.1",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3",
     "yargs": "^14.2.0"
   }
 }
