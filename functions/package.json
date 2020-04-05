@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "pushd node_modules/canvas && node-gyp rebuild"
+  },
   "dependencies": {
     "archiver": "^3.1.1",
     "async": "^3.1.0",
