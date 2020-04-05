@@ -1,17 +1,17 @@
 [build]
-    command = "yarn build"
+    command = "pushd functions/create-checkout && yarn && popd && yarn build"
     publish = "public"
     functions = "functions"
 
 
 [[redirects]]
   from = "/api/trending"
-  to = " /.netlify/functions/get-trending"
+  to = "/.netlify/functions/get-trending"
   status = 200
 
 [[redirects]]
   from = "/api/search"
-  to = " /.netlify/functions/search"
+  to = "/.netlify/functions/search"
   status = 200
 
 # [dev]

@@ -12,13 +12,18 @@ export default function Videos() {
 
   useEffect(() => {
     async function getTrending() {
+      // const url = "/api/trending"
+      const url = "/.netlify/functions/get-trending"
       try {
         const {
           data: {
             error,
             videosUrls: { collector },
           },
-        } = await Axios.get("/api/trending")
+        } = await Axios.get(url)
+        // setTimeout(() => {
+
+        // }, 10000);
         setTrending(collector)
         setError(error)
         setHeading("trending")
@@ -37,6 +42,8 @@ export default function Videos() {
   }
 
   async function getSearch() {
+    // const url ="/api/search"
+    const url = "/.netlify/functions/search"
     setTrending([])
     setHeading("")
     try {
@@ -45,7 +52,7 @@ export default function Videos() {
           error,
           videosUrls: { collector },
         },
-      } = await Axios.get(`/api/search/?tag=${search}`)
+      } = await Axios.get(`${url}?tag=${search}`)
       setTrending(collector)
       setError(error)
       setHeading(`#${search}`)
