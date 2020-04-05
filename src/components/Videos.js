@@ -12,8 +12,9 @@ export default function Videos() {
 
   useEffect(() => {
     async function getTrending() {
-      // const url = "/api/trending"
-      const url = "/.netlify/functions/get-trending"
+      const url = "/api/trending"
+      let timedOut = false
+      // const url = "/.netlify/functions/get-trending"
       try {
         const {
           data: {
@@ -21,12 +22,16 @@ export default function Videos() {
             videosUrls: { collector },
           },
         } = await Axios.get(url)
-        // setTimeout(() => {
-
-        // }, 10000);
-        setTrending(collector)
-        setError(error)
-        setHeading("trending")
+        setTimeout(() => {
+          timedOut = true
+        }, 10000)
+        if (timedOut) {
+          setHeading("Sorry request timed out. Try refreshing the page.")
+        } else {
+          setTrending(collector)
+          setError(error)
+          setHeading("trending")
+        }
       } catch (error) {
         // setError(error)
       }
@@ -42,8 +47,8 @@ export default function Videos() {
   }
 
   async function getSearch() {
-    // const url ="/api/search"
-    const url = "/.netlify/functions/search"
+    const url = "/api/search"
+    // const url = "/.netlify/functions/search"
     setTrending([])
     setHeading("")
     try {
