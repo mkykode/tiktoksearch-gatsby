@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "canvas": "^2.6.1",
     "tiktok-scraper": "^1.1.1"
   }
 }
