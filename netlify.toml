@@ -1,5 +1,5 @@
 [build]
-    command = "cd functions && yarn && cd .. && yarn build"
+    command = "yarn build"
     publish = "public"
     functions = "functions"
 

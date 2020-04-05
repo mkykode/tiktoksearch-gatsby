@@ -13,11 +13,14 @@ export default function Videos() {
   useEffect(() => {
     async function getTrending() {
       try {
-        const res = await Axios.get("http://localhost:8888/api/trending")
-        console.log(res)
-
-        // setTrending(collector)
-        // setError(error)
+        const {
+          data: {
+            error,
+            videosUrls: { collector },
+          },
+        } = await Axios.get("/api/trending")
+        setTrending(collector)
+        setError(error)
         setHeading("trending")
       } catch (error) {
         // setError(error)
@@ -37,16 +40,18 @@ export default function Videos() {
     setTrending([])
     setHeading("")
     try {
-      // const {
-      //   error,
-      //   videosUrls: { collector }
-      // } = await Axios.get(`/search/${search}`);
-      // setTrending(collector);
-      // setError(error);
-      // // setHeading(`#${search}`);
-      // if (collector.length <= 2) {
-      //   setLoadingText("Sorry, no videos match this search tag.")
-      // }
+      const {
+        data: {
+          error,
+          videosUrls: { collector },
+        },
+      } = await Axios.get(`/api/search/?tag=${search}`)
+      setTrending(collector)
+      setError(error)
+      setHeading(`#${search}`)
+      if (collector.length <= 2) {
+        setLoadingText("Sorry, no videos match this search tag.")
+      }
     } catch (error) {
       setError(error)
     }
