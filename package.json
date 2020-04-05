@@ -29,7 +29,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "cd functions && yarn",
+    "prebuild": "cd functions && npm install",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
