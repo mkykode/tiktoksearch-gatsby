@@ -13,15 +13,14 @@ export default function Videos() {
   useEffect(() => {
     async function getTrending() {
       try {
-        // const {
-        //   error,
-        //   videosUrls: { collector }
-        // } = await Axios.get('/trending');
-        // setTrending(collector);
-        // setError(error);
+        const res = await Axios.get("http://localhost:8888/api/trending")
+        console.log(res)
+
+        // setTrending(collector)
+        // setError(error)
         setHeading("trending")
       } catch (error) {
-        setError(error)
+        // setError(error)
       }
       //   console.log(data);
     }
