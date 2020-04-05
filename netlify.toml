@@ -5,5 +5,17 @@
 
 
 [[redirects]]
-    from = "/.netlify/functions/*"
-    to = "/api/:splat"
+  from = "/api/trending"
+  to = " /.netlify/functions/get-trending"
+  status = 200
+
+[[redirects]]
+  from = "/api/search"
+  to = " /.netlify/functions/search"
+  status = 200
+
+#   [dev]
+#   command = "yarn start" # Command to start your dev server
+#   port = 8000 # Port that the dev server will be listening on
+#   targetPort = 8000 # Port of target app server
+#   publish = "public" # If you use a _redirect file, provide the path to your static content folder
