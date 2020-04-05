@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "postinstall": "pushd node_modules/canvas && node-gyp rebuil"
+    "postinstall": "cd node_modules/canvas && node-gyp rebuil"
   },
   "dependencies": {
     "archiver": "^3.1.1",
