@@ -1,5 +1,5 @@
 [build]
-    command = "yarn build"
+    command = "cd functions/get-trending && yarn && cd functions/search && yarn &&yarn build"
     publish = "public"
     functions = "functions"
 
@@ -14,8 +14,9 @@
   to = " /.netlify/functions/search"
   status = 200
 
-#   [dev]
-#   command = "yarn start" # Command to start your dev server
-#   port = 8000 # Port that the dev server will be listening on
-#   targetPort = 8000 # Port of target app server
-#   publish = "public" # If you use a _redirect file, provide the path to your static content folder
+# [dev]
+# command = 'yarn develop'
+# functionsPort = 34567
+# port = 8000
+# publish = 'public'
+# targetPort = 8000
