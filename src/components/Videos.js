@@ -9,11 +9,11 @@ export default function Videos() {
   const [search, setSearch] = useState(undefined)
   const [playing, setPlaying] = useState(false)
   const [loadingText, setLoadingText] = useState("Loading...")
+  const [waitTenSeconds, setwaitTenSeconds] = useState(false)
 
   useEffect(() => {
     async function getTrending() {
       const url = "/api/trending"
-      let timedOut = false
       // const url = "/.netlify/functions/get-trending"
       try {
         const {
@@ -22,23 +22,27 @@ export default function Videos() {
             videosUrls: { collector },
           },
         } = await Axios.get(url)
-        setTimeout(() => {
-          timedOut = true
-        }, 10000)
-        if (timedOut) {
-          setHeading("Sorry request timed out. Try refreshing the page.")
-        } else {
-          setTrending(collector)
-          setError(error)
-          setHeading("trending")
-        }
+        setTrending(collector)
+        setError(error)
+        setHeading("trending")
       } catch (error) {
-        // setError(error)
+        setError(error)
+        console.error(error)
       }
-      //   console.log(data);
     }
+
+
     getTrending()
   }, [])
+
+  async function wait10Seconds() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        setwaitTenSeconds(true)
+        resolve(true)
+      }, 10000)
+    })
+  }
 
   function onInputChange(e) {
     const value = e.target.value
@@ -91,6 +95,7 @@ export default function Videos() {
       e.target.playbackRate = 1
     }
   }
+
 
   if (error !== null) {
     return <Box>There is an issue getting trending videos. Error:{error}</Box>

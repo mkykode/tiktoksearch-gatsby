@@ -1,5 +1,5 @@
 [build]
-    command = "cd functions && npm install && cd .. && npm run-scripts build"
+    command = "yarn functions"
     publish = "public"
     functions = "functions"
 
